@@ -1,0 +1,202 @@
+/* FLLAMS — Border Principle.
+   The page is the plain body of a saree (ivory, no pattern).
+   The garment photo is its border. Gold is only a thin line.
+   Locked colours: Ivory #FAF6EF, Ink #1C1A17, Zari Gold #B08A3C (lines only),
+   Deep Maroon #6E1423 (checkout button only).
+   Two fonts, both system stacks — no webfont download, fast load.
+   No slider, no video, no pop-ups. */
+
+:root {
+  --ivory: #FAF6EF;
+  --ink: #1C1A17;
+  --gold: #B08A3C;
+  --maroon: #6E1423;
+  --serif: Georgia, "Times New Roman", Times, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.25; }
+h1 { font-size: 34px; margin: 0 0 16px; }
+h2 { font-size: 28px; margin: 0 0 12px; }
+h3 { font-size: 21px; margin: 0 0 8px; }
+p { margin: 0 0 16px; }
+a { color: var(--ink); }
+img { display: block; max-width: 100%; height: auto; }
+
+/* One line header, no banner. */
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--gold);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 26px;
+  letter-spacing: 0.22em;
+  text-decoration: none;
+  color: var(--ink);
+}
+nav { display: flex; gap: 22px; flex-wrap: wrap; }
+nav a { text-decoration: none; font-size: 15px; }
+nav a:hover, nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+.cart-link { font-size: 15px; }
+
+main { max-width: 1120px; margin: 0 auto; padding: 48px 24px 80px; }
+
+/* Gold double rule — the saree border, used once under the hero. */
+.gold-rule {
+  border: 0;
+  border-top: 3px double var(--gold);
+  margin: 40px 0 56px;
+}
+.gold-line { border-top: 1px solid var(--gold); margin: 48px 0; }
+
+/* Homepage hero: headline BESIDE the photo, never over it. */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero img { border: 1px solid var(--gold); }
+.hero p.lede { font-size: 18px; }
+
+/* Buttons. Maroon means checkout, only checkout, everywhere. */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-family: var(--sans);
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+}
+.btn-maroon {
+  background: var(--maroon);
+  border-color: var(--maroon);
+  color: #fff;
+}
+.btn-maroon:hover { opacity: 0.92; }
+/* WhatsApp button is outlined, never maroon. */
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+.btn-outline:hover { background: var(--ink); color: var(--ivory); }
+
+/* Collection grid: 3 per row desktop, 1 per row mobile, large gaps. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 40px;
+  margin-top: 32px;
+}
+.card a { text-decoration: none; color: var(--ink); }
+.card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--gold); }
+.card h3 { margin: 14px 0 2px; font-size: 20px; }
+.card .meta { font-size: 14px; margin: 0; }
+.card .price { font-size: 16px; margin: 4px 0 0; }
+.label { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Product page: photo first, large. Fixed order: garment, name, price, button. */
+.product { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+.product .main-photo img { border: 1px solid var(--gold); }
+.thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.thumbs img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 1px solid var(--gold); cursor: pointer; }
+.thumbs img.active { outline: 2px solid var(--maroon); outline-offset: 2px; }
+.product .buy { margin-top: 8px; }
+.price { font-size: 20px; }
+.duty-note { font-size: 14px; margin-top: 12px; }
+.placeholder-note {
+  font-size: 14px;
+  border: 1px solid var(--gold);
+  padding: 12px 16px;
+  margin-top: 20px;
+}
+
+/* Size selector + size chart. */
+.sizes { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 20px; }
+.size-btn {
+  min-width: 52px;
+  padding: 10px 14px;
+  font-family: var(--sans);
+  font-size: 15px;
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+}
+.size-btn[aria-pressed="true"] { background: var(--ink); color: var(--ivory); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; margin: 12px 0 24px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--gold); }
+th { font-family: var(--serif); font-weight: 400; }
+
+/* Strips on the homepage. */
+.strip { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 72px; }
+.strip img { border: 1px solid var(--gold); }
+
+footer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  border-top: 1px solid var(--gold);
+  font-size: 14px;
+}
+footer nav { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; }
+
+.steps { counter-reset: step; padding-left: 0; list-style: none; }
+.steps li { margin-bottom: 20px; padding-left: 44px; position: relative; }
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 28px; height: 28px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  text-align: center; line-height: 28px;
+  font-family: var(--serif);
+}
+.muted { font-size: 14px; }
+.cart-empty { font-size: 15px; }
+
+/* Cart drawer: a simple panel, not a pop-up takeover. */
+.cart-panel {
+  border: 1px solid var(--gold);
+  padding: 20px 24px;
+  margin-top: 32px;
+  background: var(--ivory);
+}
+.cart-panel ul { list-style: none; padding: 0; margin: 0 0 16px; }
+.cart-panel li {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 8px 0; border-bottom: 1px solid var(--gold);
+}
+.cart-panel li:last-child { border-bottom: 0; }
+.cart-panel button { font-family: var(--sans); background: none; border: 0; cursor: pointer; text-decoration: underline; font-size: 14px; }
+
+@media (max-width: 760px) {
+  h1 { font-size: 28px; }
+  main { padding: 32px 20px 64px; }
+  .hero, .product, .strip { grid-template-columns: 1fr; gap: 32px; }
+  .grid { grid-template-columns: 1fr; }
+  header { flex-wrap: wrap; padding: 20px; }
+}
